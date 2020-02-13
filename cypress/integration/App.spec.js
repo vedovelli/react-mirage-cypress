@@ -3,7 +3,7 @@ import { makeServer } from "../../src/server";
 
 let server;
 
-beforeEach(() => (server = makeServer("test")));
+beforeEach(() => (server = makeServer({ environment: "test" })));
 afterEach(() => server.shutdown());
 
 describe("App.js", () => {
