@@ -1,4 +1,4 @@
-import { Server, Model } from "miragejs";
+import { Server, Model, Response } from "miragejs";
 
 export function makeServer({ environment = "development" } = {}) {
   let server = new Server({
@@ -11,6 +11,7 @@ export function makeServer({ environment = "development" } = {}) {
     seeds(server) {
       server.create("user", { name: "Bob" });
       server.create("user", { name: "Alice" });
+      server.create("user", { name: "Amanda" });
     },
 
     routes() {
@@ -19,6 +20,9 @@ export function makeServer({ environment = "development" } = {}) {
       this.get("/users", schema => {
         return schema.users.all();
       });
+      // this.get("/users", () => {
+      //   return new Response(500, {}, { error: "The database is on vacation." });
+      // });
     }
   });
 

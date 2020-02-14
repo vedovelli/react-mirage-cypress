@@ -10,8 +10,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 if (window.Cypress) {
-  // mirage cypress server
-  let cyServer = new Server({
+  new Server({
     environment: "test",
     routes() {
       let methods = ["get", "put", "patch", "post", "delete"];
